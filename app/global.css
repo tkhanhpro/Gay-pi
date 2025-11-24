@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --hub-black: #000000;
+  --hub-dark: #1b1b1b;
+  --hub-gray: #2c2c2c;
+  --hub-text: #f1f1f1;
+  --hub-subtext: #9b9b9b;
+  --hub-orange: #ff9900;
+  --hub-orange-hover: #e68a00;
+}
+
+body {
+  background: linear-gradient(-45deg, #000000, #1b1b1b, #0f0f0f, #2c2c2c);
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  overflow-x: hidden;
+  font-family: 'Inter', Arial, sans-serif;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1b1b1b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ff9900;
+}
+
+.logo-text {
+  letter-spacing: -1px;
+}
+
+.skill-bar {
+  transition: width 1.5s ease-in-out;
+}
+
+.floating-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 153, 0, 0.1);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(255, 153, 0, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.matrix-code {
+  position: absolute;
+  color: rgba(255, 153, 0, 0.3);
+  font-family: monospace;
+  font-size: 18px;
+  z-index: -1;
+  user-select: none;
+}
+
+.orbit-ring {
+  position: absolute;
+  border: 1px solid rgba(255, 153, 0, 0.1);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.orbit-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 153, 0, 0.5);
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.morph-element {
+  animation: morph 10s ease-in-out infinite;
+  background: rgba(255, 153, 0, 0.05);
+}
+
+.svg-icon {
+  transition: all 0.3s ease;
+  fill: currentColor;
+}
+
+.svg-icon:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 8px rgba(255, 153, 0, 0.7));
+}
+
+.rotating-text {
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.cursor {
+  animation: blink 1s infinite;
+}
+
+.avatar-container {
+  position: relative;
+}
+
+.avatar-glow {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+  right: -6px;
+  bottom: -6px;
+  background: conic-gradient(from 0deg, #ff9900, #ff5e00, #ff0099, #9900ff, #ff9900);
+  border-radius: 50%;
+  animation: borderRotate 3s linear infinite;
+  z-index: 0;
+}
+
+.hexagon {
+  position: absolute;
+  width: 100px;
+  height: 57.74px;
+  background: rgba(255, 153, 0, 0.03);
+  margin: 28.87px 0;
+  border-left: 1px solid rgba(255, 153, 0, 0.1);
+  border-right: 1px solid rgba(255, 153, 0, 0.1);
+  z-index: -1;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+}
+
+.hexagon:before {
+  bottom: 100%;
+  border-bottom: 28.87px solid rgba(255, 153, 0, 0.03);
+}
+
+.hexagon:after {
+  top: 100%;
+  border-top: 28.87px solid rgba(255, 153, 0, 0.03);
+}
+
+.grid-pattern {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(255, 153, 0, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 153, 0, 0.05) 1px, transparent 1px);
+  background-size: 50px 50px;
+  z-index: -1;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes slideUp {
+  0% { opacity: 0; transform: translateY(30px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInLeft {
+  0% { opacity: 0; transform: translateX(-30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInRight {
+  0% { opacity: 0; transform: translateX(30px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: 0 0 5px rgba(255, 153, 0, 0.5); }
+  50% { box-shadow: 0 0 20px rgba(255, 153, 0, 0.8); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes bounceIn {
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1.05); }
+  70% { transform: scale(0.9); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes wave {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-10px) rotate(2deg); }
+  50% { transform: translateY(5px) rotate(-1deg); }
+  75% { transform: translateY(-5px) rotate(1deg); }
+}
+
+@keyframes ripple {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+@keyframes matrix {
+  0% { transform: translateY(0) rotate(0deg); }
+  100% { transform: translateY(-1000px) rotate(720deg); }
+}
+
+@keyframes orbit {
+  0% { transform: rotate(0deg) translateX(150px) rotate(0deg); }
+  100% { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@keyframes pulseSoft {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+@keyframes morph {
+  0%, 100% { 
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+    transform: rotate(0deg) scale(1);
+  }
+  33% { 
+    border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+    transform: rotate(120deg) scale(1.1);
+  }
+  66% { 
+    border-radius: 70% 30% 50% 50% / 30% 70% 50% 70%;
+    transform: rotate(240deg) scale(0.9);
+  }
+}
+
+@keyframes borderRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+@keyframes particleMove {
+  0% { transform: translateY(0) translateX(0); }
+  100% { transform: translateY(-100vh) translateX(100px); }
+}
+
+@keyframes hexagonRotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .matrix-code {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .orbit-ring {
+    display: none;
+  }
+}
